@@ -1,0 +1,33 @@
+[global]
+address = "127.0.0.1"
+port = 8081
+
+[global.limits]
+forms = 131072
+
+[development]
+address = "localhost"
+port = 8081
+template_dir = "dev_templates/"
+assets_dir = "dev_assets/"
+keep_alive = 5
+log = "normal"
+limits = { forms = 32768 }
+
+[staging]
+address = "0.0.0.0"
+port = 8000
+workers = [number of cpus * 2]
+keep_alive = 5
+log = "normal"
+secret_key = [randomly generated at launch]
+limits = { forms = 32768 }
+
+[production]
+address = "0.0.0.0"
+port = 8000
+template_dir = "prod_templates/"
+assets_dir = "prod_assets/"
+keep_alive = 5
+log = "critical"
+limits = { forms = 32768 }

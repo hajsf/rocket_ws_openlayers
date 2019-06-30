@@ -1,0 +1,17 @@
+[package]
+name = "ws_tracking"
+version = "0.1.0"
+authors = ["Hasan Yousef <hasan.ajsf@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+rocket = "0.4.2"
+ws = "*"
+serde = "*"
+serde_json = "*"
+serde_derive = "*"
+
+[dependencies.rocket_contrib]
+version = "0.4.2"
+default-features = false
+features = ["serve","tera_templates"]

@@ -1,0 +1,9 @@
+<script>
+    var form = document.getElementById("form");
+        form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        var input = document.getElementById("msg");
+        socket.send(input.value);
+        input.value = "";
+    });
+</script>

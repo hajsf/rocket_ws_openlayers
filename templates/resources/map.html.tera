@@ -1,0 +1,48 @@
+<script>
+var baseMapLayer = new ol.layer.Tile({
+    source: new ol.source.OSM()
+  });
+
+var view = new ol.View({
+            center: ol.proj.fromLonLat([-74.0061,40.712]), 
+            zoom: 17 //Initial Zoom Level
+})
+
+var map = new ol.Map({
+    target: 'map',
+    layers: [ baseMapLayer],
+    view: view
+});
+  
+// Make a new feature marker
+var marker = new ol.Feature({
+    name: 'Null Island',
+    population: 4000,
+    rainfall: 500,
+    geometry: new ol.geom.Point(
+      ol.proj.fromLonLat([-74.006,40.7127])  // new Point([0, 0])
+    ),  // Cordinates of New York's Town Hall
+});
+
+// Style the marker
+var iconStyle = new ol.style.Style({
+    image: new ol.style.Icon(({
+        color: '#ffcd46',
+        crossOrigin: 'anonymous',
+        src: 'http://127.0.0.1:8081/static/img/truck.png'
+    }))
+});
+
+marker.setStyle(iconStyle);
+
+// Make a source for the feature 
+var vectorSource = new ol.source.Vector({
+    features: [marker]
+});
+// Make a new layer
+var markerVectorLayer = new ol.layer.Vector({
+    source: vectorSource,
+});
+
+map.addLayer(markerVectorLayer);
+</script>
